@@ -1,26 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap');
-@import "tailwindcss";
-@import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-border: hsl(var(--border));
-  --font-sans: var(--app-font-sans);
-  --radius-lg: var(--radius);
+@layer base {
+  :root {
+    --background: 40 30% 97%;
+    --foreground: 20 10% 10%;
+    --border: 35 20% 85%;
+    --radius: 0.6rem;
+    --app-font-sans: 'Tajawal', 'Noto Sans Arabic', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
+    font-family: var(--app-font-sans);
+  }
 }
 
-:root {
-  --background: 40 30% 97%;
-  --foreground: 20 10% 10%;
-  --border: 35 20% 85%;
-  --radius: 0.6rem;
-  --app-font-sans: 'Tajawal', 'Noto Sans Arabic', system-ui, sans-serif;
+html.dark {
+  --background: 20 20% 10%;
+  --foreground: 40 40% 98%;
+  --border: 20 30% 30%;
 }
 
 @layer base {
-  * { box-sizing: border-box; }
-  body { @apply bg-background text-foreground font-sans antialiased; margin: 0; padding: 0; }
+  * {
+    @apply box-border;
+  }
 }
